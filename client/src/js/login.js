@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/1
 
 const inpEmail = document.querySelector("#email");
 const inpPwd = document.querySelector("#password");
-const loginFrom = document.querySelector("#login-from");
+const loginFrom = document.querySelector("#login-form");
 
 const handleLogin = function(event) {
     event.preventDefault();
@@ -19,14 +19,14 @@ const handleLogin = function(event) {
     signInWithEmailAndPassword(auth, email, password).then((userCredential)=>{
         const user = userCredential.user;
 
-        const userSesstion = {
+        const userSession = {
             user: {
                 email: user.email
             },
             expiry: new Date().getTime() + 2*60*60*1000 // 2 giờ sau
         };
 
-        localStorage.setItem('user_session', JSON.stringify(usersession));
+        localStorage.setItem('user_session', JSON.stringify(userSession));
         alert("Đăng nhập thành công");
         window.location.href = 'index.html';
     })
